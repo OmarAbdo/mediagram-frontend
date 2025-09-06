@@ -14,10 +14,10 @@ export const AuthContext = createContext<AuthContextType | undefined>(
 );
 
 // the concert auth context instance is created via the CreateContext,
-export const useAuth = () => {
+export const useMyCustomAuthHook = () => {
   const context = useContext(AuthContext);
   if (context === undefined) {
-    throw new Error("useAuth must be used within an AuthProvider");
+    throw new Error("useMyCustomAuthHook must be used within an AuthProvider");
   }
   return context;
 };

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useLogin } from "../model/loginMutation";
+import { useLogin } from "../model/LoginMutation";
 
 export const LoginPage = () => {
   const [email, setEmail] = useState("");

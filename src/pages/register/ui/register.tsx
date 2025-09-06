@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useRegister } from "../model/registerMutation";
+import { useRegister } from "../model/RegisterMutation";
 
 export const RegisterForm = () => {};
 

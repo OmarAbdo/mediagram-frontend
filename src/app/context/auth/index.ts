@@ -1,2 +1,2 @@
-export { useAuth, AuthContext } from "./authContext"
-export { AuthProvider } from "./authProvider"
+export { useMyCustomAuthHook, AuthContext } from "./AuthContext"
+export { AuthProvider } from "./AuthProvider"
