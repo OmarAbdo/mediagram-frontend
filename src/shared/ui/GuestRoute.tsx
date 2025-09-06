@@ -1,23 +1,24 @@
-// shared/ui/GuestRoute.tsx
-import type { ReactNode } from "react";
-import { Navigate } from "react-router";
-import { useMyCustomAuthHook } from "../../app/context/auth";
+// Deprecated for React Router's auth loader
+// // shared/ui/GuestRoute.tsx
+// import type { ReactNode } from "react";
+// import { Navigate } from "react-router";
+// import { useMyCustomAuthHook } from "../../app/context/auth";
 
-interface GuestRouteProps {
-  children: ReactNode;
-  redirectTo?: string;
-}
+// interface GuestRouteProps {
+//   children: ReactNode;
+//   redirectTo?: string;
+// }
 
-export const GuestRoute = ({ children, redirectTo = "/" }: GuestRouteProps) => {
-  const { user, loading } = useMyCustomAuthHook();
+// export const GuestRoute = ({ children, redirectTo = "/" }: GuestRouteProps) => {
+//   const { user, loading } = useMyCustomAuthHook();
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+//   if (loading) {
+//     return <div>Loading...</div>;
+//   }
 
-  if (user) {
-    return <Navigate to={redirectTo} replace />;
-  }
+//   if (user) {
+//     return <Navigate to={redirectTo} replace />;
+//   }
 
-  return <>{children}</>;
-};
+//   return <>{children}</>;
+// };
