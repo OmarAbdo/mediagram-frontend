@@ -5,6 +5,7 @@ import type { User } from "firebase/auth";
 interface AuthContextType {
   user: User | null;
   loading: boolean;
+  logout: () => Promise<void>
 }
 
 // now that I have imported CreateContext() and created a type for it, I can instantiate it

@@ -13,7 +13,7 @@ export const router = createBrowserRouter([
       {
         index: true,
         element: <HomePage />,
-        // loader: createAuthLoader(), // you can use createAuthLoader() undefined requireAuth to explicity intend that this page should remain public
+        loader: createAuthLoader(undefined),
       },
       {
         path: "login",
