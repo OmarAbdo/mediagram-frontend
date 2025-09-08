@@ -8,7 +8,7 @@ import { onAuthStateChanged } from 'firebase/auth';
  */
 export const createAuthLoader = (requireAuth?: boolean) => {
     return async () => {
-        if (auth.currentUser === null) { // firebase's user is never undefined it's either null or user
+        if (auth.currentUser === null) { // (property) Auth.currentUser: User | null
             await new Promise((resolve) => {
                 const unsubscribe = onAuthStateChanged(auth, (user) => {
                     unsubscribe()
@@ -18,21 +18,13 @@ export const createAuthLoader = (requireAuth?: boolean) => {
         }
 
         const currentUser = auth.currentUser
-        console.log("currentUser", currentUser)
-        console.log("requireAuth", requireAuth)
-        console.log("---------")
-        // we don't have a user but it's a user page
         if (currentUser === null && requireAuth === true) {
-            console.log("4")
             return redirect('/login') // sorry, have to login
         }
-        // we do have a user but it's a visitor-only page
         if (currentUser && requireAuth === false) {
-            console.log("5")
-            return redirect('/') // sorry, but this page doesn't make any sense to you, I'm sending you to the home page
+            return redirect('/')
         }
 
-        console.log("do i ever get printed out?")
         return null
     };
 };

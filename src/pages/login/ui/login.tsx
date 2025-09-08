@@ -17,15 +17,20 @@ export const LoginPage = () => {
     }
   };
 
+
   useEffect(() => {
-    console.log("LoginPage inside useEffect");
+    console.log("componentDidMount or componentDidUpdate logic")
+    return () => {
+      console.log("componentWillMount")
+
+    }
   }, []);
 
-  console.log("LoginPage outside useEffect");
 
   return (
+
     <>
-      <p> Imma grown ass LoginPage</p>
+      <p> Imma grown ass LoginPage </p>
       <form onSubmit={handleSubmit}>
         <input
           type="email"
