@@ -4,6 +4,7 @@ import { useLogin } from "../model/LoginMutation";
 export const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [resetMessage, setResetMessage] = useState("")
 
   const loginMutation = useLogin();
 
@@ -17,21 +18,26 @@ export const LoginPage = () => {
     }
   };
 
-
   useEffect(() => {
-    console.log("componentDidMount or componentDidUpdate logic")
+    console.log("Login form will reset in 5 minutes of being inactive")
+    const myTimer = setTimeout(() => {
+      setPassword("")
+      setEmail("")
+      setResetMessage("It's been 5 seconds of being inactive, so the form decided to reset itself.")
+    }, 5000)
+  
     return () => {
       console.log("componentWillMount")
+      clearTimeout(myTimer)
 
     }
-  }, []);
-
+  }, [password, email]);
 
   return (
-
     <>
       <p> Imma grown ass LoginPage </p>
       <form onSubmit={handleSubmit}>
+        <p>The form will reset in 5 seconds of being inactive</p>
         <input
           type="email"
           value={email}
@@ -49,6 +55,7 @@ export const LoginPage = () => {
         <button type="submit" disabled={loginMutation.isPending}>
           {loginMutation.isPending ? "Loading..." : "Login"}
         </button>
+        { resetMessage }
       </form>
     </>
   );
